@@ -51,8 +51,8 @@ onMounted(() => {
 })
 
 const fields = ref([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-const redMark = ref(0)
-const blueMark = ref(10)
+const redMark = ref(10)
+const blueMark = ref(0)
 
 function onDrop(dropResult, index) {
   if (dropResult.addedIndex === null) {
@@ -92,17 +92,15 @@ function onDrop(dropResult, index) {
         >
           <Draggable
             v-if="redMark === index"
-            class="bg-red-500 draggable-item h-full w-full top-0 left-0"
+            class="bg-red-500 draggable-item h-full w-full top-0 left-0 opacity-50"
             id="redToken"
-          >
-            Rot
+            >Red
           </Draggable>
           <Draggable
             v-if="blueMark === index"
-            class="bg-blue-600 draggable-item h-full w-full relative top-0 left-0"
+            class="bg-blue-600 draggable-item h-full w-full relative top-0 left-0 opacity-50"
             id="blueToken"
-          >
-            blue
+            >Blue
           </Draggable>
           {{ value }}
         </Container>
@@ -165,7 +163,7 @@ function onDrop(dropResult, index) {
   font-size: min(28vh, 30vw);
 }
 .p1Background {
-  background-color: hsl(v-bind(p1Hue), 95%, 44%);
+  background-color: #6b8b3d;
 }
 .p2Background {
   background-color: hsl(v-bind(p2Hue), 95%, 44%);
