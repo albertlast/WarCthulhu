@@ -55,6 +55,9 @@ const redMark = ref(0)
 const blueMark = ref(10)
 
 function onDrop(dropResult, index) {
+  if (dropResult.addedIndex === null) {
+    return
+  }
   console.log('tesst')
   console.log(dropResult)
   console.log(dropResult.element.id)
