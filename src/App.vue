@@ -84,25 +84,25 @@ function onDrop(dropResult, index) {
       <ThMoreAltVue />
     </div> -->
     <div class="grid grid-cols-11" style="height: 50dvh">
-      <div v-for="(value, index) in fields" :key="index">
+      <div v-for="(value, index) in fields" :key="index" class="relative">
         <Container
           @drop="(e) => onDrop(e, index)"
           group-name="col"
-          class="h-full absolute"
-        >
+          class="relative top-0 left-0 w-full h-full"
+          ><div class="absolute top-0 left-0 w-full h-full">{{ value }}</div>
+
           <Draggable
             v-if="redMark === index"
-            class="bg-red-500 draggable-item h-full w-full top-0 left-0 opacity-50"
+            class="bg-red-500 draggable-item h-full w-full absolute top-0 left-0 opacity-50"
             id="redToken"
-            >Red
+            >&nbsp;
           </Draggable>
           <Draggable
             v-if="blueMark === index"
             class="bg-blue-600 draggable-item h-full w-full relative top-0 left-0 opacity-50"
             id="blueToken"
-            >Blue
+            >&nbsp;
           </Draggable>
-          {{ value }}
         </Container>
       </div>
     </div>
