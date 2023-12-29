@@ -13,7 +13,7 @@ const startLife = ref<number>(
 const CurrentLife = ref(startLife.value)
 
 const CurrentLifeCom = computed(() =>
-  CurrentLife.value.toString().padStart(2, '0')
+  CurrentLife.value.toString().padStart(1, '0')
 )
 
 const partValueShow = ref<boolean>(false)
