@@ -5,7 +5,7 @@ const delayFirstHold = 1000
 const delayNextHold = 500
 
 const { playerName } = defineProps<{ playerName: string }>()
-const storagePath = `glc${playerName}.life`
+const storagePath = `wtu${playerName}.life`
 
 const startLife = ref<number>(
   Number.parseInt(localStorage.getItem(storagePath) ?? '0')
