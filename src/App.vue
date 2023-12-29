@@ -83,7 +83,7 @@ function onDrop(dropResult, index) {
     >
       <ThMoreAltVue />
     </div> -->
-    <div class="grid grid-cols-11" style="height: 20dvh">
+    <div class="grid grid-cols-11" style="height: 50dvh">
       <div v-for="(value, index) in fields" :key="index">
         <Container
           @drop="(e) => onDrop(e, index)"
@@ -145,7 +145,7 @@ function onDrop(dropResult, index) {
     />
     <PlayerView
       class="PlayerView p1Background"
-      style="height: 80dvh"
+      style="height: 50dvh"
       player-name="first"
       ref="p1Ref"
     />
