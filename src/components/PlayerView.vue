@@ -8,7 +8,7 @@ const { playerName } = defineProps<{ playerName: string }>()
 const storagePath = `glc${playerName}.life`
 
 const startLife = ref<number>(
-  Number.parseInt(localStorage.getItem(storagePath) ?? '20')
+  Number.parseInt(localStorage.getItem(storagePath) ?? '0')
 )
 const CurrentLife = ref(startLife.value)
 
