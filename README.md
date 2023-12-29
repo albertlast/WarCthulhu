@@ -3,7 +3,7 @@
 Is a basic life counter for games,
 it can handle two persons at the same time.
 
-[App](https://albertlast.github.io/GameLifeCounter/)
+[App](https://albertlast.github.io/WarCuthullu/)
 
 Keeping holding the - or + area to jump 10 steps
 
