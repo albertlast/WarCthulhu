@@ -85,22 +85,26 @@ function onDrop(dropResult, index) {
     </div> -->
     <div class="grid grid-cols-11" style="height: 20dvh">
       <div v-for="(value, index) in fields" :key="index">
-        <Container @drop="(e) => onDrop(e, index)" group-name="col">
+        <Container
+          @drop="(e) => onDrop(e, index)"
+          group-name="col"
+          class="h-full absolute"
+        >
           <Draggable
             v-if="redMark === index"
-            class="bg-red-500 draggable-item"
+            class="bg-red-500 draggable-item h-full w-full top-0 left-0"
             id="redToken"
           >
             Rot
           </Draggable>
-          {{ value }}
           <Draggable
             v-if="blueMark === index"
-            class="bg-blue-600 draggable-item"
+            class="bg-blue-600 draggable-item h-full w-full relative top-0 left-0"
             id="blueToken"
           >
             blue
           </Draggable>
+          {{ value }}
         </Container>
       </div>
     </div>
