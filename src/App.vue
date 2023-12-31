@@ -9,7 +9,6 @@ import RePaletteLine from './components/icons/RePaletteLine.vue'
 import ColorView from './components/ColorView.vue'
 
 import { Container, Draggable } from 'vue-dndrop'
-import Slider from '@vueform/slider'
 
 const applyDrag = (arr, dragResult) => {
   const { removedIndex, addedIndex, payload } = dragResult
@@ -76,12 +75,12 @@ function onDrop(dropResult, index) {
 const sliderRef = ref({ min: 0, max: 10, value: [0, 10] })
 const sliderCom = computed({
   get() {
-    return { value: [blueMark.value, redMark.value], min: 0, max: 10 }
+    return { min: blueMark.value, max: redMark.value }
   },
   set(val) {
     console.log(val)
-    blueMark.value = val.value[0]
-    redMark.value = val.value[1]
+    blueMark.value = val.min
+    redMark.value = val.max
   },
 })
 const sliderSet = (val) => {
@@ -89,8 +88,6 @@ const sliderSet = (val) => {
   redMark.value = val[1]
 }
 </script>
-
-<style src="@vueform/slider/themes/default.css"></style>
 
 <template>
   <main class="w-screen h-screen">
@@ -102,7 +99,7 @@ const sliderSet = (val) => {
     >
       <ThMoreAltVue />
     </div> -->
-    <div class="grid grid-cols-11" style="height: 40dvh">
+    <div class="grid grid-cols-11" style="height: 30dvh">
       <div v-for="(value, index) in fields" :key="index" class="relative">
         <Container
           @drop="(e) => onDrop(e, index)"
@@ -125,11 +122,12 @@ const sliderSet = (val) => {
         </Container>
       </div>
     </div>
-    <Slider
-      v-bind="sliderCom"
-      v-mount="sliderCom.value"
-      @set="sliderSet"
-      style="height: 10dvh"
+    <q-range
+      :min="0"
+      :max="10"
+      marker-labels
+      v-model="sliderCom"
+      style="height: 20dvh"
     />
     <div v-if="showElements" class="openSetting grid grid-cols-3">
       <ReSettings5Line
