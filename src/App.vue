@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, computed } from 'vue'
 import PlayerView from './components/PlayerView.vue'
 import SettingView from './components/SettingView.vue'
 import ReSettings5Line from './components/icons/ReSettings5Line.vue'
@@ -9,6 +9,7 @@ import RePaletteLine from './components/icons/RePaletteLine.vue'
 import ColorView from './components/ColorView.vue'
 
 import { Container, Draggable } from 'vue-dndrop'
+import Slider from '@vueform/slider'
 
 const applyDrag = (arr, dragResult) => {
   const { removedIndex, addedIndex, payload } = dragResult
@@ -71,7 +72,25 @@ function onDrop(dropResult, index) {
   }
   // items = applyDrag(items, dropResult)
 }
+
+const sliderRef = ref({ min: 0, max: 10, value: [0, 10] })
+const sliderCom = computed({
+  get() {
+    return { value: [blueMark.value, redMark.value], min: 0, max: 10 }
+  },
+  set(val) {
+    console.log(val)
+    blueMark.value = val.value[0]
+    redMark.value = val.value[1]
+  },
+})
+const sliderSet = (val) => {
+  blueMark.value = val[0]
+  redMark.value = val[1]
+}
 </script>
+
+<style src="@vueform/slider/themes/default.css"></style>
 
 <template>
   <main class="w-screen h-screen">
@@ -83,7 +102,7 @@ function onDrop(dropResult, index) {
     >
       <ThMoreAltVue />
     </div> -->
-    <div class="grid grid-cols-11" style="height: 50dvh">
+    <div class="grid grid-cols-11" style="height: 40dvh">
       <div v-for="(value, index) in fields" :key="index" class="relative">
         <Container
           @drop="(e) => onDrop(e, index)"
@@ -106,7 +125,12 @@ function onDrop(dropResult, index) {
         </Container>
       </div>
     </div>
-
+    <Slider
+      v-bind="sliderCom"
+      v-mount="sliderCom.value"
+      @set="sliderSet"
+      style="height: 10dvh"
+    />
     <div v-if="showElements" class="openSetting grid grid-cols-3">
       <ReSettings5Line
         @click.stop="
