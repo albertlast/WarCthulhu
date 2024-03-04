@@ -24,7 +24,7 @@
     "@types/node": "^20.11.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitest/coverage-v8": "^1.2.1",
-    "@vue/test-utils": "^2.4.3",
+    "@vue/test-utils": "^2.4.4",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.17",
     "jsdom": "^24.0.0",
